@@ -2,6 +2,33 @@ package org.example.LinkedList;
 
 import org.example.Node.Node;
 
+/*
+* What is a linked list?
+* A linked list is a way to store a sequence of data where each piece of data (called a "node") is connected to the next one. It’s like a chain, where each link knows where the next one is, but nothing else.
+
+Here’s a basic structure:
+
+Node: Each element in a linked list is a node. A node holds:
+
+Some data (like a number or a name).
+A reference (or link) to the next node in the list.
+Head: The first node in the linked list is called the "head." It’s the entry point to the list.
+* From the head, you can follow each link to reach all other nodes.
+
+Tail: The last node in a linked list, which points to "null" (or none), indicating the end of the list.
+
+There are two main types of linked lists:
+
+Singly Linked List: Each node points to the next node in the list. You can only move forward through the list.
+Doubly Linked List: Each node has two references—one to the next node and one to the previous node—allowing you to move forward and backward.
+Example: If you have a linked list with the numbers 3, 5, and 8, it would look like this:
+*
+* Head -> [3 | next] -> [5 | next] -> [8 | null]
+
+* The main benefit of a linked list is that it’s easy to add or remove elements, especially at the beginning or end, since you just need to update the links.
+* However, because it doesn’t store elements in a row like an array, it’s slower to access specific elements.
+* */
+
 public class LinkedList {
     // only attribute is the head
     Node head;
@@ -43,6 +70,14 @@ public class LinkedList {
             }
             tail.setNext(new Node(data));
         }
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
     }
 
     public int removeHead(){
