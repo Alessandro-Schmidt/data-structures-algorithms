@@ -56,6 +56,7 @@ public class Queue {
         }
     }
 
+    // Takes the head and removes it
     public int dequeue() {
         if (!this.isEmpty()) {
             int data = this.queue.removeHead();
