@@ -28,6 +28,95 @@ They’re commonly used in programming for tasks like undo functions,
 * */
 
 
-public class Stack {
+import org.example.LinkedList.LinkedList;
 
+public class Stack {
+    public LinkedList stack;
+    public int size;
+    public int maxSize;
+
+    public LinkedList getStack() {
+        return stack;
+    }
+
+    public void setStack(LinkedList stack) {
+        this.stack = stack;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public Stack(int maxSize) {
+        setSize(0);
+        stack = new LinkedList();
+        setMaxSize(maxSize);
+    }
+
+    // add to head
+    public void push(int value){
+        // avoid overflow
+        if(hasSpace()){
+            this.stack.addToHead(value);
+            this.size++;
+            System.out.println("Added " + value + "! Stack size is now " + this.size);
+        }else {
+            throw new Error("Stack is full!");
+        }
+    }
+
+    // remove the head
+    public int pop(){
+        // Avoid underflow:
+        if(!isEmpty()){
+            int data = stack.removeHead();
+            this.size--;
+            System.out.println("Removed " + data + "! Stack size is now " + this.size);
+            return data;
+        }else {
+            throw new Error("Stack is empty!");
+        }
+
+    }
+
+    // return head
+    public int peek(){
+        if(isEmpty()){
+            throw new Error("Stack is empty!");
+        }else {
+            System.out.println("<head>: " + this.stack.getHead().getData());
+            return this.stack.getHead().getData();
+        }
+    }
+
+    public boolean isEmpty(){
+        return this.size == 0;
+    }
+
+    public boolean hasSpace(){
+        return this.size<this.maxSize;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack(8);
+        stack.push(19);
+        stack.push(23);
+        stack.push(14);
+        stack.push(31);
+        stack.peek();
+        stack.pop();
+        stack.peek();
+    }
 }
